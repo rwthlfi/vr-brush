@@ -1,11 +1,11 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+<h1 align="center">VR Brush</h1>
+  <a href="https://github.com/rwthlfi/vr-brush">
+    <img src="imgs/header.png" alt="Header">
   </a>
 </div>
-<h3 align="center">VR Brush</h3>
 
 VR Brush is Part of [MyScore](https://vredu.lfi.rwth-aachen.de/) / Anywhere Academy. [Repo](https://github.com/rwthlfi/myscoreproject)
 
