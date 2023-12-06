@@ -47,7 +47,8 @@ public class Brush : MonoBehaviour
     private void initiateStroke()
     {
         _currentlyDrawing = true;
-        _currentStroke = new Stroke(transform.position, brushShape);
+        _currentStroke = gameObject.AddComponent<Stroke>();
+        _currentStroke.brushShape = this.brushShape;
     }
 
     /**
@@ -55,7 +56,7 @@ public class Brush : MonoBehaviour
      */
     private bool nextSegmentReady()
     {
-        return true;//Time.deltaTime >= 1;
+        return true;
     }
 
     /**
