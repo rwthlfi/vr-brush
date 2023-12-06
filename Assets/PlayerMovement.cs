@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-	private float movementSpeed = 10.0f;
-	private float rotationSpeed = 400.0f;
+	private float _movementSpeed = 10.0f;
+	private float _rotationSpeed = 400.0f;
 
 	// Start is called before the first frame update
 	void Start()
@@ -18,13 +18,17 @@ public class PlayerMovement : MonoBehaviour
 	{
 		Vector3 movement = new Vector3(Input.GetAxis("X"), Input.GetAxis("Y"), Input.GetAxis("Z"));
 		movement.Normalize();
-		movement *= movementSpeed * Time.deltaTime;
+		movement *= _movementSpeed * Time.deltaTime;
 
-		Vector3 rotation = new Vector3( Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0.0f);
+		Vector3 rotation = new Vector3(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0.0f);
 		rotation.Normalize();
-		rotation *= rotationSpeed * Time.deltaTime;
+		rotation *= _rotationSpeed * Time.deltaTime;
 
 		transform.Translate(movement);
-		transform.eulerAngles += rotation;
-	}
+        rotation = rotation + transform.eulerAngles;
+        //Debug.Log(rotation.x);
+        //rotation.x = rotation.x;
+        transform.eulerAngles = rotation;
+    }
+
 }

@@ -8,21 +8,22 @@ using UnityEngine;
  */
 public class Brush : MonoBehaviour
 {
-    private bool currentlyDrawing = false;
-    private bool currentStroke;
+    private bool _currentlyDrawing = false;
+    public GameObject brushShape;
+    public Stroke _currentStroke;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        brushShape = GameObject.CreatePrimitive(PrimitiveType.Sphere);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (currentlyDrawing)
+        if (_currentlyDrawing)
         {
-            if (!Input.GetKeyDown("Mouse 0"))
+            if (!Input.GetKey("mouse 0"))
             {
                 finishStroke();
                 return;
@@ -33,7 +34,7 @@ public class Brush : MonoBehaviour
                 return;
             }
         }
-        else if (Input.GetKeyDown("Mouse 0"))
+        else if (Input.GetKeyDown("mouse 0"))
         {
             initiateStroke();
             return;
@@ -43,33 +44,33 @@ public class Brush : MonoBehaviour
     /**
      * Start drawing by creating a new Stroke and giving it the beginning of the stroke
      */
-    void initiateStroke()
+    private void initiateStroke()
     {
-        currentlyDrawing = true;
-        currentStroke = new Stroke(new Mesh());
+        _currentlyDrawing = true;
+        _currentStroke = new Stroke(transform.position, brushShape);
     }
 
     /**
      * Returns wether or not the next segment of the stroke should be drawn
      */
-    bool nextSegmentReady()
+    private bool nextSegmentReady()
     {
-        return true;
+        return true;//Time.deltaTime >= 1;
     }
 
     /**
      * Create a new segment and give it to the stroke
      */
-    void drawNextSegment()
+    private void drawNextSegment()
     {
-
+        _currentStroke.AddPoint(this.transform.position);
     }
 
     /**
      * Finish the Stroke by applying the ending of the stroke
      */
-    void finishStroke()
+    private void finishStroke()
     {
-        currentlyDrawing = false;
-    } 
+        _currentlyDrawing = false;
+    }
 }
