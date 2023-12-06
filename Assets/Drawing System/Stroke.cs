@@ -6,23 +6,28 @@ using System.Linq;
 public class Stroke : MonoBehaviour
 {
 
-    private List<Vector3> _segments;
+    public List<Vector3> segments;
     public GameObject brushShape;
 
-    void Start()
+    private void Awake()
     {
-        _segments = new List<Vector3>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        segments = new List<Vector3>();
     }
 
     public void AddPoint(Vector3 nextPoint)
     {
-        _segments.Add(nextPoint);
-       Instantiate(brushShape, nextPoint, Quaternion.identity);
+
+        Vector3 temp = nextPoint - segments.Last();
+
+        float rotationZ = Mathf.Rad2Deg * Mathf.Asin(temp.y / Mathf.Sqrt((temp.x * temp.x) + (temp.y * temp.y)));
+        float rotationX = Mathf.Rad2Deg * Mathf.Asin(temp.z / Mathf.Sqrt((temp.y * temp.y) + (temp.z * temp.z)));
+
+        segments.Add(nextPoint);
+
+        Instantiate(brushShape, nextPoint, Quaternion.Euler(rotationX, 0, rotationZ));
+    }
+    public void FirstPoint(Vector3 nextPoint)
+    {
+        segments.Add(nextPoint);
     }
 }

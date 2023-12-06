@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+using System.Collections.Generic;
+using System.Linq;
 
 /**
  * uses an object as a brush to paint a stroke
@@ -15,7 +14,9 @@ public class Brush : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        brushShape = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        //XXX
+        //this is not good, since it creates an object which we dont really need
+        brushShape = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
     }
 
     // Update is called once per frame
@@ -28,7 +29,7 @@ public class Brush : MonoBehaviour
                 finishStroke();
                 return;
             }
-            if (nextSegmentReady())
+            if (nextSegmentShouldDraw())
             {
                 drawNextSegment();
                 return;
@@ -49,14 +50,15 @@ public class Brush : MonoBehaviour
         _currentlyDrawing = true;
         _currentStroke = gameObject.AddComponent<Stroke>();
         _currentStroke.brushShape = this.brushShape;
+        _currentStroke.FirstPoint(this.transform.position);
     }
 
     /**
      * Returns wether or not the next segment of the stroke should be drawn
      */
-    private bool nextSegmentReady()
+    private bool nextSegmentShouldDraw()
     {
-        return true;
+        return Vector3.Distance(_currentStroke.segments.Last(), transform.position) > 0.5f;
     }
 
     /**
