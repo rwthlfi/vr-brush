@@ -20,4 +20,15 @@ public class Stroke : MonoBehaviour
         lineRenderer.positionCount = smoothedPoints.Length;
         lineRenderer.SetPositions(smoothedPoints);
     }
+
+    //clean up stuff thats no longer needed
+    public void Finish()
+    {
+        if(segments.Count == 1)
+        {
+            Destroy(gameObject);
+        }
+        segments.Clear();
+        Destroy(this);
+    }
 }
