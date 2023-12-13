@@ -7,8 +7,45 @@ using System.Linq;
  */
 public class Brush : MonoBehaviour
 {
+    private bool _brushPropertiesChanged = false;
     private bool _currentlyDrawing = false;
-    public Stroke _currentStroke;
+    private Stroke _currentStroke;
+
+    private float _size;
+    public float Size
+    {
+        get
+        {
+            return _size;
+        }
+        set
+        {
+            _size = value;
+            _brushPropertiesChanged = true;
+        }
+    }
+    private Color _color;
+    public Color Color
+    {
+        get
+        {
+            return _color;
+        }
+        set
+        {
+            _color = value;
+            _brushPropertiesChanged = true;
+        }
+    }
+
+
+
+    private void Awake()
+    {
+        _size = 1.0f;
+        _color = Color.green;
+        _currentlyDrawing = false;
+    }
 
     // Update is called once per frame
     void Update()
@@ -22,6 +59,11 @@ public class Brush : MonoBehaviour
             }
             if (nextSegmentShouldDraw())
             {
+                if (_brushPropertiesChanged)
+                {
+                    updateBrushProperties();
+                }
+
                 drawNextSegment();
                 return;
             }
@@ -42,14 +84,12 @@ public class Brush : MonoBehaviour
         _currentStroke = newStroke.AddComponent<Stroke>();
 
         Material material = Resources.Load<Material>("Assets/Drawing System/BrushMaterials/Default-Stroke.mat");
-        
+
+        //This defines how the drawn stroke looks
         _currentStroke.lineRenderer.material = material;
-        _currentStroke.lineRenderer.material.color = Color.red;
-        _currentStroke.lineRenderer.startWidth = 1;
-        _currentStroke.lineRenderer.endWidth = 1;
-        _currentStroke.lineRenderer.sortingOrder = 1;
-        _currentStroke.lineRenderer.numCornerVertices = 0;
-        _currentStroke.lineRenderer.numCapVertices = 4;
+        _currentStroke.lineRenderer.material.color = _color;
+        _currentStroke.lineRenderer.startWidth = _size;
+        _currentStroke.lineRenderer.endWidth = _size;
 
         _currentStroke.AddPoint(this.transform.position);
 
@@ -61,8 +101,14 @@ public class Brush : MonoBehaviour
      */
     private bool nextSegmentShouldDraw()
     {
-
         return Vector3.Distance(_currentStroke.segments.Last(), transform.position) > 1.0f;
+    }
+
+    private void updateBrushProperties()
+    {
+        _currentStroke.lineRenderer.material.color = _color;
+        _currentStroke.lineRenderer.startWidth = _size;
+        _currentStroke.lineRenderer.endWidth = _size;
     }
 
     /**
@@ -78,6 +124,7 @@ public class Brush : MonoBehaviour
      */
     private void finishStroke()
     {
+        _currentStroke.Finish();
         _currentlyDrawing = false;
     }
 }
