@@ -8,16 +8,7 @@ using System.Linq;
 public class Brush : MonoBehaviour
 {
     private bool _currentlyDrawing = false;
-    public GameObject brushShape;
     public Stroke _currentStroke;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //XXX
-        //this is not good, since it creates an object which we dont really need
-        brushShape = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
-    }
 
     // Update is called once per frame
     void Update()
@@ -47,10 +38,22 @@ public class Brush : MonoBehaviour
      */
     private void initiateStroke()
     {
+        GameObject newStroke = new GameObject();
+        _currentStroke = newStroke.AddComponent<Stroke>();
+
+        Material material = Resources.Load<Material>("Assets/Drawing System/BrushMaterials/Default-Stroke.mat");
+        
+        _currentStroke.lineRenderer.material = material;
+        _currentStroke.lineRenderer.material.color = Color.red;
+        _currentStroke.lineRenderer.startWidth = 1;
+        _currentStroke.lineRenderer.endWidth = 1;
+        _currentStroke.lineRenderer.sortingOrder = 1;
+        _currentStroke.lineRenderer.numCornerVertices = 0;
+        _currentStroke.lineRenderer.numCapVertices = 4;
+
+        _currentStroke.AddPoint(this.transform.position);
+
         _currentlyDrawing = true;
-        _currentStroke = gameObject.AddComponent<Stroke>();
-        _currentStroke.brushShape = this.brushShape;
-        _currentStroke.FirstPoint(this.transform.position);
     }
 
     /**
@@ -58,7 +61,8 @@ public class Brush : MonoBehaviour
      */
     private bool nextSegmentShouldDraw()
     {
-        return Vector3.Distance(_currentStroke.segments.Last(), transform.position) > 0.5f;
+
+        return Vector3.Distance(_currentStroke.segments.Last(), transform.position) > 1.0f;
     }
 
     /**
