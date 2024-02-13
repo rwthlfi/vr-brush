@@ -9,6 +9,7 @@ public class Brush : MonoBehaviour
 {
     private bool _brushPropertiesChanged = false;
     private bool _currentlyDrawing = false;
+    private bool _triggerPressed = false;
     private Stroke _currentStroke;
 
     private float _size;
@@ -38,10 +39,11 @@ public class Brush : MonoBehaviour
         }
     }
 
-
-
+    private List<UnityEngine.XR.InputDevice> _rightHandedControllers = new List<UnityEngine.XR.InputDevice>();
     private void Awake()
     {
+        UnityEngine.XR.InputDeviceCharacteristics desiredCharacteristics = UnityEngine.XR.InputDeviceCharacteristics.HeldInHand | UnityEngine.XR.InputDeviceCharacteristics.Right | UnityEngine.XR.InputDeviceCharacteristics.Controller;
+        UnityEngine.XR.InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, _rightHandedControllers);
         _size = 1.0f;
         _color = Color.green;
         _currentlyDrawing = false;
@@ -50,9 +52,10 @@ public class Brush : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        _triggerPressed = _rightHandedControllers[0].TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out _triggerPressed) && _triggerPressed;
         if (_currentlyDrawing)
         {
-            if (!Input.GetKey("mouse 0"))
+            if (!_triggerPressed)
             {
                 finishStroke();
                 return;
@@ -68,7 +71,7 @@ public class Brush : MonoBehaviour
                 return;
             }
         }
-        else if (Input.GetKeyDown("mouse 0"))
+        else if (_triggerPressed)
         {
             initiateStroke();
             return;
