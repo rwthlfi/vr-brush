@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg1"
+   width="100"
+   height="100"
+   viewBox="0 0 100 100"
+   sodipodi:docname="rwth_hydrology_logo_cmyk.svg"
+   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="1.5154453"
+     inkscape:cx="201.26098"
+     inkscape:cy="55.429254"
+     inkscape:window-width="1920"
+     inkscape:window-height="1008"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="group-R5">
+    <inkscape:page
+       x="0"
+       y="0"
+       inkscape:label="1"
+       id="page1"
+       width="100"
+       height="100"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <g
+     id="g1"
+     inkscape:groupmode="layer"
+     inkscape:label="1">
+    <g
+       id="group-R5">
+      <g
+         id="g24"
+         transform="matrix(1.4025244,0,0,1.4025244,-2.3867112,-34.815987)">
+        <path
+           id="path23"
+           d="m 258.645,680.316 c 1.007,-23.281 -25.309,-112.363 -85.032,-205.484 -48.64,-75.855 -58.711,-215.602 95.153,-248.055 -7.692,4.649 -55.676,33.457 -38.461,107.344 19.922,85.547 111.336,115.883 130.578,205.492 6.379,29.742 -52.172,96.672 -102.238,140.703"
+           style="fill:#8ebfe9;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           transform="matrix(0.13333333,0,0,-0.13333333,0,120.94667)" />
+        <path
+           id="path24"
+           d="m 363.918,509.246 c 35.43,-55.699 65.801,-122.476 50.609,-188.277 -15.468,-67.043 -68.828,-94.602 -121.468,-93.125 -14.172,8.101 -42.512,21.258 -50.614,59.726 40.489,23.282 66.039,64.637 50.614,126.524 31.179,26.722 66.945,76.933 70.859,95.152"
+           style="fill:#176fc1;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           transform="matrix(0.13333333,0,0,-0.13333333,0,120.94667)" />
+      </g>
+    </g>
+  </g>
+</svg>

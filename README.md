@@ -15,6 +15,10 @@ VR Brush is an open-source, cooperative Virtual Reality (VR) 3D drawing tool dev
 
 The software is *open source* and *fee* as in free speach (see [GNU General Public License v3.0](https://github.com/rwthlfi/vr-brush/blob/main/LICENSE) for details). All contents are licensed as *open educational resources* ([CC-by-4.0](https://creativecommons.org/licenses/by/4.0/deed.en)).
 
+![GitHub License](https://img.shields.io/github/license/rwthlfi/vr-brush?style=for-the-badge)
+[![Static Badge][CC-BY-4.0]][CC-BY-4.0]
+
+
 ## Technical Details
 - **Development Platform**: Unity 3D Engine
 - **Programming Language**: C#
@@ -38,7 +42,12 @@ Amrou Arab,  Hussein Idris, Helena Rickmann, Christian Rene Thelen, Astrid Warke
 
 <!-- BUILT WITH -->
 ## Built with
-[![Unity][Unity-Shield]][Unity-url][![Visual Studio][VisualStudio-Shield]][VisualStudio-url][![Blender][Blender-Shield]][Blender-url]
+[![Unity][Unity-Shield]][Unity-url]
+[![Visual Studio][VisualStudio-Shield]][VisualStudio-url]
+[![C Sharp][Csharp]][Csharp]
+
+[![ChatGPT][ChatGPT]][ChatGPT]
+[![InkSkape][InkSkape]][InkSkape]
 
 
 ## License
@@ -62,5 +71,7 @@ vr [at] lfi.rwth-aachen.de
 [VisualStudio-Shield]: https://img.shields.io/badge/Visual_Studio-purple?style=for-the-badge&logo=visualstudio
 [VisualStudio-url]: https://visualstudio.microsoft.com/
 [Blender-Shield]: https://img.shields.io/badge/Blender-black?style=for-the-badge&logo=blender
-[Blender-url]: https://www.blender.org/
-
+[CC-BY-4.0]: https://img.shields.io/badge/Creative%20Commons-BY--4.0-bue?style=for-the-badge&logo=creativecommons&logoColor=%23efbe00&labelColor=%23333333&color=%23efbe00
+[Csharp]: https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=csharp&logoColor=white
+[ChatGPT]: https://img.shields.io/badge/ChatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white
+[InkSkape]: https://img.shields.io/badge/Inkscape-000000?style=for-the-badge&logo=Inkscape&logoColor=white
