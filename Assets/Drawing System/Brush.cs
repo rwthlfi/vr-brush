@@ -44,15 +44,28 @@ public class Brush : MonoBehaviour
     {
         UnityEngine.XR.InputDeviceCharacteristics desiredCharacteristics = UnityEngine.XR.InputDeviceCharacteristics.HeldInHand | UnityEngine.XR.InputDeviceCharacteristics.Right | UnityEngine.XR.InputDeviceCharacteristics.Controller;
         UnityEngine.XR.InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, _rightHandedControllers);
-        _size = 1.0f;
-        _color = Color.green;
+        _size = 0.2f;
+        _color = Color.blue;
         _currentlyDrawing = false;
     }
+
+    public void StartDrawing()
+    {
+        // _currentlyDrawing = true;
+        _triggerPressed = true;
+        Debug.Log("Start drawing", gameObject);
+        // initiateStroke();
+    }
+
+    public void StopDrawing()
+    {
+        _triggerPressed = false;
+    }
+
 
     // Update is called once per frame
     void Update()
     {
-        _triggerPressed = _rightHandedControllers[0].TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out _triggerPressed) && _triggerPressed;
         if (_currentlyDrawing)
         {
             if (!_triggerPressed)
@@ -94,9 +107,9 @@ public class Brush : MonoBehaviour
         _currentStroke.lineRenderer.startWidth = _size;
         _currentStroke.lineRenderer.endWidth = _size;
 
-        _currentStroke.AddPoint(this.transform.position);
-
         _currentlyDrawing = true;
+
+        drawNextSegment();
     }
 
     /**
@@ -104,7 +117,7 @@ public class Brush : MonoBehaviour
      */
     private bool nextSegmentShouldDraw()
     {
-        return Vector3.Distance(_currentStroke.segments.Last(), transform.position) > 1.0f;
+        return Vector3.Distance(_currentStroke.segments.Last(), transform.position) > 0.05f;
     }
 
     private void updateBrushProperties()
