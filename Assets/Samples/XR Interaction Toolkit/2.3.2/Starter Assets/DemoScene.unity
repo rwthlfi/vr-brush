@@ -570,6 +570,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Brush Wide Modell
       objectReference: {fileID: 0}
+    - target: {fileID: -6235362425634521548, guid: d07c710eedee96646ab776079ce11751, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 161ce72593d240a4d9d459a970de2749, type: 2}
     - target: {fileID: -201402539467013757, guid: d07c710eedee96646ab776079ce11751, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.000048
@@ -862,6 +866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DrawPoint: {fileID: 1450821372}
+  tipOfPen: {fileID: 929432739}
 --- !u!114 &556502799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1487,6 +1492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DrawPoint: {fileID: 0}
+  tipOfPen: {fileID: 0}
 --- !u!1 &874919884
 GameObject:
   m_ObjectHideFlags: 0
@@ -1712,7 +1718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4422659090696076826, guid: fd28f23af44f73f4a95e33435872ad15, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 262.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4422659090696076826, guid: fd28f23af44f73f4a95e33435872ad15, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1720,7 +1726,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4422659090696076826, guid: fd28f23af44f73f4a95e33435872ad15, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 147.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4422659090696076826, guid: fd28f23af44f73f4a95e33435872ad15, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1873,6 +1879,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4616165200164398447, guid: 76f3439a0ae796e4b81bee3f91f888ee, type: 3}
   m_PrefabInstance: {fileID: 893438434}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &929432739 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1504571854934681244, guid: d07c710eedee96646ab776079ce11751, type: 3}
+  m_PrefabInstance: {fileID: 247097345}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &967567311
 GameObject:
@@ -2834,6 +2845,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DrawPoint: {fileID: 0}
+  tipOfPen: {fileID: 0}
 --- !u!1001 &1519520462
 PrefabInstance:
   m_ObjectHideFlags: 0

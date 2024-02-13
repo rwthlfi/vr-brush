@@ -91,6 +91,7 @@ public class Brush : MonoBehaviour
         }
     }
 
+    public GameObject tipOfPen;
     /**
      * Start drawing by creating a new Stroke and giving it the beginning of the stroke
      */
@@ -104,13 +105,19 @@ public class Brush : MonoBehaviour
         //This defines how the drawn stroke looks
         _currentStroke.lineRenderer.material = material;
         _currentStroke.lineRenderer.material.color = _color;
+
+        tipOfPen.GetComponent<Renderer>().material = material;
+        tipOfPen.GetComponent<Renderer>().material.color = _color;
+
         _currentStroke.lineRenderer.startWidth = _size;
         _currentStroke.lineRenderer.endWidth = _size;
 
         _currentlyDrawing = true;
 
         drawNextSegment();
+
     }
+    
 
     /**
      * Returns wether or not the next segment of the stroke should be drawn
