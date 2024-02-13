@@ -11,7 +11,7 @@ public class Brush : MonoBehaviour
     private bool _currentlyDrawing = false;
     private bool _triggerPressed = false;
     private Stroke _currentStroke;
-
+    public Transform DrawPoint;
     private float _size;
     public float Size
     {
@@ -132,7 +132,8 @@ public class Brush : MonoBehaviour
      */
     private void drawNextSegment()
     {
-        _currentStroke.AddPoint(this.transform.position);
+        // Position der Pinselspitze: DrawPoint
+        _currentStroke.AddPoint(DrawPoint.position);
     }
 
     /**
