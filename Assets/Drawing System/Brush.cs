@@ -9,8 +9,9 @@ public class Brush : MonoBehaviour
 {
     private bool _brushPropertiesChanged = false;
     private bool _currentlyDrawing = false;
+    private bool _triggerPressed = false;
     private Stroke _currentStroke;
-
+    public Transform DrawPoint;
     private float _size;
     public float Size
     {
@@ -38,21 +39,36 @@ public class Brush : MonoBehaviour
         }
     }
 
-
-
+    private List<UnityEngine.XR.InputDevice> _rightHandedControllers = new List<UnityEngine.XR.InputDevice>();
     private void Awake()
     {
-        _size = 1.0f;
-        _color = Color.green;
+        UnityEngine.XR.InputDeviceCharacteristics desiredCharacteristics = UnityEngine.XR.InputDeviceCharacteristics.HeldInHand | UnityEngine.XR.InputDeviceCharacteristics.Right | UnityEngine.XR.InputDeviceCharacteristics.Controller;
+        UnityEngine.XR.InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, _rightHandedControllers);
+        _size = 0.2f;
+        _color = Color.blue;
         _currentlyDrawing = false;
     }
+
+    public void StartDrawing()
+    {
+        // _currentlyDrawing = true;
+        _triggerPressed = true;
+        Debug.Log("Start drawing", gameObject);
+        // initiateStroke();
+    }
+
+    public void StopDrawing()
+    {
+        _triggerPressed = false;
+    }
+
 
     // Update is called once per frame
     void Update()
     {
         if (_currentlyDrawing)
         {
-            if (!Input.GetKey("mouse 0"))
+            if (!_triggerPressed)
             {
                 finishStroke();
                 return;
@@ -68,13 +84,14 @@ public class Brush : MonoBehaviour
                 return;
             }
         }
-        else if (Input.GetKeyDown("mouse 0"))
+        else if (_triggerPressed)
         {
             initiateStroke();
             return;
         }
     }
 
+    public GameObject tipOfPen;
     /**
      * Start drawing by creating a new Stroke and giving it the beginning of the stroke
      */
@@ -88,20 +105,26 @@ public class Brush : MonoBehaviour
         //This defines how the drawn stroke looks
         _currentStroke.lineRenderer.material = material;
         _currentStroke.lineRenderer.material.color = _color;
+
+        tipOfPen.GetComponent<Renderer>().material = material;
+        tipOfPen.GetComponent<Renderer>().material.color = _color;
+
         _currentStroke.lineRenderer.startWidth = _size;
         _currentStroke.lineRenderer.endWidth = _size;
 
-        _currentStroke.AddPoint(this.transform.position);
-
         _currentlyDrawing = true;
+
+        drawNextSegment();
+
     }
+    
 
     /**
      * Returns wether or not the next segment of the stroke should be drawn
      */
     private bool nextSegmentShouldDraw()
     {
-        return Vector3.Distance(_currentStroke.segments.Last(), transform.position) > 1.0f;
+        return Vector3.Distance(_currentStroke.segments.Last(), transform.position) > 0.05f;
     }
 
     private void updateBrushProperties()
@@ -116,7 +139,8 @@ public class Brush : MonoBehaviour
      */
     private void drawNextSegment()
     {
-        _currentStroke.AddPoint(this.transform.position);
+        // Position der Pinselspitze: DrawPoint
+        _currentStroke.AddPoint(DrawPoint.position);
     }
 
     /**
