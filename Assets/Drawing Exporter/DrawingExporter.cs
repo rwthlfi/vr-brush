@@ -40,7 +40,9 @@ public class DrawingExporter : MonoBehaviour
     
     private string FilePath()
     {
-        return _path + "/drawing" + System.DateTime.Now.ToString("yyyyMMddHHmm") + ".json";
+        string Path = _path + "/drawing" + System.DateTime.Now.ToString("yyyyMMddHHmm") + ".json";
+        Debug.Log("Path: " + Path);
+        return Path;
     }
 
     
