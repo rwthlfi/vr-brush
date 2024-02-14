@@ -1,6 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/unity
 # Edit at https://www.toptal.com/developers/gitignore?templates=unity
 
+### SketchUp ###
+*.skb
+
 ### Unity ###
 # This .gitignore file should be placed at the root of your Unity project directory
 #
