@@ -98,6 +98,7 @@ public class Brush : MonoBehaviour
     private void initiateStroke()
     {
         GameObject newStroke = new GameObject();
+        newStroke.tag = "Stroke";
         _currentStroke = newStroke.AddComponent<Stroke>();
 
         Material material = Resources.Load<Material>("Assets/Drawing System/BrushMaterials/Default-Stroke.mat");

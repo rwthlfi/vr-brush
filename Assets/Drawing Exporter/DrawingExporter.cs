@@ -3,47 +3,81 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using UnityEngine;
+using SimpleFileBrowser;
 
 public class DrawingExporter : MonoBehaviour
 {
-    private AndroidPermissionHandler _permissionHandler;
-    private GameObject[] _strokes;
+    private GameObject[] _strokeObjects;
     private string _path = Application.persistentDataPath;
-    
+    private string _jsonText = "";
+
+    private FileBrowser.Permission _storagePermission;
 
     private void Start()
     { // in Brush.cs newStroke.tag = "Stroke" 
-        _permissionHandler = new AndroidPermissionHandler();
-        if (_permissionHandler.CheckStoragePermissions())
+        
+    }
+
+    private bool StoragePermission()
+    {
+        _storagePermission = FileBrowser.CheckPermission();
+        if (_storagePermission == FileBrowser.Permission.ShouldAsk)
         {
-            ObjectsToJSON();
+            FileBrowser.RequestPermission();
+            _storagePermission = FileBrowser.CheckPermission();
+        }
+        return _storagePermission == FileBrowser.Permission.Granted;
+    }
+
+    public void SaveDrawing()
+    {
+        if(StoragePermission())
+        {
+            FindAllStrokes();
+            StrokeObjectsToJSON();
+            FindSaveLocation();
         } else
         {
-            Debug.Log("Permission for accessing storage not granted. Unable to save drawing");
-        }
+            Debug.Log("No permission to access storage");
+            return;
+        }  
     }
 
-
-    private void ObjectsToJSON()
+    private void FindAllStrokes()
     {
-        _strokes = GameObject.FindGameObjectsWithTag("Stroke");
-        var sb = new StringBuilder();
+        _strokeObjects = GameObject.FindGameObjectsWithTag("Stroke");
+    }
 
-        foreach (GameObject stroke in _strokes)
+    private void StrokeObjectsToJSON()
+    {
+        foreach (GameObject stroke in _strokeObjects)
         {
-            string json = JsonUtility.ToJson(stroke);
-            sb.AppendLine(json);
+            _jsonText += JsonUtility.ToJson(stroke);
         }
-
-        File.WriteAllText(FilePath(), sb.ToString());
     }
     
-    private string FilePath()
+    private void FindSaveLocation()
     {
-        string Path = _path + "/drawing" + System.DateTime.Now.ToString("yyyyMMddHHmm") + ".json";
-        Debug.Log("Path: " + Path);
-        return Path;
+        FileBrowser.ShowSaveDialog((path) => { SaveFile(path); }, null, 0, false, null, DefaultFileName(), "Save", "Save"); 
     }
 
+    private void SaveFile(string[] path)
+    {
+        try
+        {
+            File.WriteAllText(path[0], _jsonText);
+        }
+        catch(System.Exception e)
+        {
+            Debug.Log(e.Message);
+            return;
+        }
+    }
+
+    // creates a filename with the current date & time
+    private string DefaultFileName()
+    {
+        return "drawing" + System.DateTime.Now.ToString("yyyyMMddHHmm") + ".json";
+    }
     
 }
