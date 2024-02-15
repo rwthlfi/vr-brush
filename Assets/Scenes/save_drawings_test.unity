@@ -2206,7 +2206,6 @@ GameObject:
   - component: {fileID: 1531300327}
   - component: {fileID: 1531300326}
   - component: {fileID: 1531300325}
-  - component: {fileID: 1531300324}
   - component: {fileID: 1531300323}
   - component: {fileID: 1531300322}
   m_Layer: 5
@@ -2242,20 +2241,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _exportDrawingButton: {fileID: 1755272343}
---- !u!114 &1531300324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1531300321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0ff9d9a85d5bf746b51f4b1e51f8c94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _saveButton: {fileID: 1755272343}
-  _loadButton: {fileID: 1730255302}
 --- !u!114 &1531300325
 MonoBehaviour:
   m_ObjectHideFlags: 0
