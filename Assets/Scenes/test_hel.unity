@@ -770,7 +770,6 @@ GameObject:
   - component: {fileID: 1522812057}
   - component: {fileID: 1522812056}
   - component: {fileID: 1522812060}
-  - component: {fileID: 1522812061}
   - component: {fileID: 1522812063}
   - component: {fileID: 1522812062}
   m_Layer: 5
@@ -881,20 +880,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RaycastTriggerInteraction: 1
---- !u!114 &1522812061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1522812055}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0ff9d9a85d5bf746b51f4b1e51f8c94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _saveButton: {fileID: 1521438033}
-  _loadButton: {fileID: 1520030276}
 --- !u!114 &1522812062
 MonoBehaviour:
   m_ObjectHideFlags: 0

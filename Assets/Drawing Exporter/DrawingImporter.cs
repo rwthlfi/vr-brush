@@ -33,6 +33,7 @@ public class DrawingImporter : MonoBehaviour
             {
                 FindFile();
                 CreateAllObjectsFromFile();
+                Debug.Log("recreating drawing done now apparently");
             }
             catch (System.Exception e)
             {
@@ -73,7 +74,9 @@ public class DrawingImporter : MonoBehaviour
         try
         {
             string text = File.ReadAllText(filepath[0]);
+            Debug.Log("Extracted contents from file");
             _objectsToCreate = text.Split('}');
+            Debug.Log("Got json representation of objects");
         }
         catch (System.Exception e)
         {
@@ -84,8 +87,17 @@ public class DrawingImporter : MonoBehaviour
 
     private void CreateObjectFromJson(string json)
     {
-        GameObject newstroke = JsonUtility.FromJson<GameObject>(json);
-        newstroke.tag = "Stroke";
+        SaveLoadDrawing drawingData = JsonUtility.FromJson<SaveLoadDrawing>(json);
+        ConfigureGameObject(drawingData);
+    }
+
+    private void ConfigureGameObject(SaveLoadDrawing drawingData)
+    {
+        GameObject newStroke = new GameObject();
+        drawingData._stroke = newStroke.AddComponent<Stroke>();
+        Vector3 pos = new Vector3(drawingData.posX, drawingData.posY, drawingData.posZ);
+        newStroke.transform.position = pos;
+        newStroke.tag = "Stroke";
     }
 
     void Start()

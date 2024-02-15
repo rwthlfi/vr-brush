@@ -39,8 +39,11 @@ public class DrawingExporter : MonoBehaviour
         {
             Debug.Log("Yay! We got permission");
             FindAllStrokes();
+            Debug.Log("Found the strokes");
             StrokeObjectsToJSON();
+            Debug.Log("Got a nice json string now");
             FindSaveLocation();
+            Debug.Log("Saved as a file, apparently");
         } else
         {
             Debug.Log("No permission to access storage");
@@ -55,9 +58,10 @@ public class DrawingExporter : MonoBehaviour
 
     private void StrokeObjectsToJSON()
     {
-        foreach (GameObject stroke in _strokeObjects)
+        foreach (GameObject obj in _strokeObjects)
         {
-            _jsonText += JsonUtility.ToJson(stroke);
+            SaveLoadDrawing drawingData = new SaveLoadDrawing(obj);
+            _jsonText += JsonUtility.ToJson(drawingData);
         }
     }
     
