@@ -29,6 +29,7 @@ public class DrawingExporter : MonoBehaviour
         return _storagePermission == FileBrowser.Permission.Granted;
     }
 
+    [ContextMenu("StartDrawing")]
     public void SaveDrawing()
     {
         if(StoragePermission())

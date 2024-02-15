@@ -21,6 +21,7 @@ public class DrawingImporter : MonoBehaviour
         return _storagePermission == FileBrowser.Permission.Granted;
     }
 
+    [ContextMenu("LoadDrawing")]
     public void ImportDrawing()
     {
         if(StoragePermission())
