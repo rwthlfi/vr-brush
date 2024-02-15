@@ -34,8 +34,6 @@ public class Brush : MonoBehaviour
     {
         UnityEngine.XR.InputDeviceCharacteristics desiredCharacteristics = UnityEngine.XR.InputDeviceCharacteristics.HeldInHand | UnityEngine.XR.InputDeviceCharacteristics.Right | UnityEngine.XR.InputDeviceCharacteristics.Controller;
         UnityEngine.XR.InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, _rightHandedControllers);
-        _size = 0.2f;
-        _color = Color.blue;
         _currentlyDrawing = false;
     }
 
