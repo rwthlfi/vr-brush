@@ -37,10 +37,12 @@ public class Brush : MonoBehaviour
         _currentlyDrawing = false;
     }
 
+    public AudioClip PencilAudioclip;
     public void StartDrawing()
     {
         // _currentlyDrawing = true;
         _triggerPressed = true;
+        AudioSource.PlayClipAtPoint(PencilAudioclip, transform.position);
         Debug.Log("Start drawing", gameObject);
         // initiateStroke();
     }
