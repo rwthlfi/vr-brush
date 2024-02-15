@@ -6,6 +6,8 @@ using SimpleFileBrowser;
 
 public class DrawingImporter : MonoBehaviour
 {
+    public GameObject _importDrawingButton;
+
     private string[] _objectsToCreate;
 
     private FileBrowser.Permission _storagePermission;
@@ -24,6 +26,7 @@ public class DrawingImporter : MonoBehaviour
     [ContextMenu("LoadDrawing")]
     public void ImportDrawing()
     {
+        Debug.Log("Loading Drawing");
         if(StoragePermission())
         {
             try

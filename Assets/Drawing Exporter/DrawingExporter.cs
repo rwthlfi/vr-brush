@@ -7,8 +7,10 @@ using SimpleFileBrowser;
 
 public class DrawingExporter : MonoBehaviour
 {
+    public GameObject _exportDrawingButton;
+
     private GameObject[] _strokeObjects;
-    private string _path = Application.persistentDataPath;
+   // private string _path = Application.persistentDataPath;
     private string _jsonText = "";
 
     private FileBrowser.Permission _storagePermission;
@@ -29,11 +31,13 @@ public class DrawingExporter : MonoBehaviour
         return _storagePermission == FileBrowser.Permission.Granted;
     }
 
-    [ContextMenu("StartDrawing")]
+    [ContextMenu("Save Drawing")]
     public void SaveDrawing()
     {
+        Debug.Log("Saving Drawing");
         if(StoragePermission())
         {
+            Debug.Log("Yay! We got permission");
             FindAllStrokes();
             StrokeObjectsToJSON();
             FindSaveLocation();
