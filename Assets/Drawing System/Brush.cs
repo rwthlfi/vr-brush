@@ -7,36 +7,26 @@ using System.Linq;
  */
 public class Brush : MonoBehaviour
 {
+    public Transform DrawPoint;
     private bool _brushPropertiesChanged = false;
     private bool _currentlyDrawing = false;
     private bool _triggerPressed = false;
     private Stroke _currentStroke;
-    public Transform DrawPoint;
+    [SerializeField]
     private float _size;
-    public float Size
-    {
-        get
-        {
-            return _size;
-        }
-        set
-        {
-            _size = value;
-            _brushPropertiesChanged = true;
-        }
-    }
+    [SerializeField]
     private Color _color;
-    public Color Color
+
+    public void SetColor(float hueValue)
     {
-        get
-        {
-            return _color;
-        }
-        set
-        {
-            _color = value;
-            _brushPropertiesChanged = true;
-        }
+        _color = Color.HSVToRGB(hueValue, 1, 1);
+        _brushPropertiesChanged = true;
+    }
+
+    public void SetSize(float size)
+    {
+        _size = size;
+        _brushPropertiesChanged = true;
     }
 
     private List<UnityEngine.XR.InputDevice> _rightHandedControllers = new List<UnityEngine.XR.InputDevice>();
