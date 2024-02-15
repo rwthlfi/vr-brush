@@ -74,7 +74,8 @@ public class DrawingExporter : MonoBehaviour
     {
         try
         {
-            File.WriteAllText(path[0], _jsonText);
+            FileBrowserHelpers.WriteTextToFile(path[0], _jsonText);
+            //File.WriteAllText(path[0], _jsonText);
         }
         catch(System.Exception e)
         {

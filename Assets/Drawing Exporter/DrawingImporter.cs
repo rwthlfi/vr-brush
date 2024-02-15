@@ -73,7 +73,8 @@ public class DrawingImporter : MonoBehaviour
     {
         try
         {
-            string text = File.ReadAllText(filepath[0]);
+            string text = FileBrowserHelpers.ReadTextFromFile(filepath[0]);
+            //string text = File.ReadAllText(filepath[0]);
             Debug.Log("Extracted contents from file");
             _objectsToCreate = text.Split('}');
             Debug.Log("Got json representation of objects");
