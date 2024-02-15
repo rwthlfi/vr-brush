@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Marbel
+  m_Name: Marbel Treppe
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 4
@@ -37,12 +37,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 0.005, y: 0.005}
-        m_Offset: {x: 0, y: 0}
+        m_Scale: {x: 0.71, y: 0.26}
+        m_Offset: {x: -0.94, y: -0.31}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 0dcdb8402f225574c82b77d064212797, type: 3}
-        m_Scale: {x: 0.005, y: 0.005}
-        m_Offset: {x: 0, y: 0}
+        m_Scale: {x: 0.71, y: 0.26}
+        m_Offset: {x: -0.94, y: -0.31}
     - _MetallicGlossMap:
         m_Texture: {fileID: 2800000, guid: 47bc4831213429f46975635156a30974, type: 3}
         m_Scale: {x: 1, y: 1}
